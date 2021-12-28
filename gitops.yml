@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitops
+  name: gitops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitops
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: gitops
+    spec:
+      containers:
+      - image: hrittik/kubernetes:latest
+        name: kubernetes
+        ports:
+        - containerPort: 3111
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portainer-gitops-service
+spec:
+  selector:
+    app: gitops
+  ports:
+    - port: 3111
+      targetPort: 3111
+  type: LoadBalancer
+
