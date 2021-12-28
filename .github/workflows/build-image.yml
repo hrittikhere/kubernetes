@@ -40,4 +40,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/portainer:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/kubernetes:latest
